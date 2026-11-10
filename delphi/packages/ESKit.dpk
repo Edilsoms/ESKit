@@ -1,0 +1,30 @@
+﻿package ESKit;
+
+{$DESCRIPTION 'ESKit - componentes estilo FMX / DevExpress para VCL (runtime)'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vclimg,
+  dbrtl;
+
+contains
+  EsGraphics in '..\source\EsGraphics.pas',
+  EsTheme in '..\source\EsTheme.pas',
+  EsFxBase in '..\source\EsFxBase.pas',
+  EsFxAnimations in '..\source\EsFxAnimations.pas',
+  EsFxShapes in '..\source\EsFxShapes.pas',
+  EsFxStdCtrls in '..\source\EsFxStdCtrls.pas',
+  EsFxLists in '..\source\EsFxLists.pas',
+  EsSkins in '..\source\EsSkins.pas',
+  EsEditors in '..\source\EsEditors.pas',
+  EsGrid in '..\source\EsGrid.pas',
+  EsNavBar in '..\source\EsNavBar.pas',
+  EsRibbon in '..\source\EsRibbon.pas',
+  EsTrueType in '..\source\EsTrueType.pas',
+  EsGridExport in '..\source\EsGridExport.pas',
+  EsToolBarGrid in '..\source\EsToolBarGrid.pas';
+
+end.

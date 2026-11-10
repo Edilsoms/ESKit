@@ -1,0 +1,26 @@
+# Lazarus / Free Pascal
+lib/
+backup/
+*.ppu
+*.o
+*.compiled
+*.rsj
+*.lps
+*.bak
+link*.res
+# Delphi
+__history/
+__recovery/
+*.dcu
+*.local
+*.identcache
+*.dproj.local
+*.stat
+*.tvsconfig
+Win32/
+Win64/
+*.exe
+*.bpl
+*.dcp
+# saídas dos exemplos
+examples/**/out/

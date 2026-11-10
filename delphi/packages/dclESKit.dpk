@@ -1,0 +1,18 @@
+﻿package dclESKit;
+
+{$DESCRIPTION 'ESKit - componentes estilo FMX / DevExpress / FireDAC (design)'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  designide,
+  ESKit,
+  ESKitDB;
+
+contains
+  EsPropEdits in '..\source\EsPropEdits.pas',
+  ESKitReg in '..\source\ESKitReg.pas';
+
+end.

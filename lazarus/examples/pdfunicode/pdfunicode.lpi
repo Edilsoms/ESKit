@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <General><Flags><MainUnitHasCreateFormStatements Value="False"/></Flags><Title Value="pdfunicode"/></General>
+    <BuildModes><Item Name="Default" Default="True"/></BuildModes>
+    <RequiredPackages>
+      <Item><PackageName Value="ESKit"/></Item>
+      <Item><PackageName Value="LCL"/></Item>
+    </RequiredPackages>
+    <Units><Unit><Filename Value="pdfunicode.lpr"/><IsPartOfProject Value="True"/></Unit></Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target><Filename Value="pdfunicode"/></Target>
+    <SearchPaths><UnitOutputDirectory Value="lib"/></SearchPaths>
+  </CompilerOptions>
+</CONFIG>

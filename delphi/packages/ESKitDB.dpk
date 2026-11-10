@@ -1,0 +1,18 @@
+﻿package ESKitDB;
+
+{$DESCRIPTION 'ESKit - componentes de banco sobre FireDAC (runtime)'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  dbrtl,
+  FireDAC,
+  FireDACCommon,
+  FireDACCommonDriver,
+  FireDACSqliteDriver;
+
+contains
+  EsDB in '..\source\EsDB.pas';
+
+end.

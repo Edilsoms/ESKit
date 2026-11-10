@@ -1,0 +1,782 @@
+object Form1: TForm1
+  Left = 200
+  Height = 760
+  Top = 120
+  Width = 1180
+  Caption = 'ESKit Demo - FMX + Express para Lazarus'
+  ClientHeight = 760
+  ClientWidth = 1180
+  Color = 15987699
+  Font.Color = 2105376
+  Position = poScreenCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  object Ribbon: TEsRibbon
+    Left = 0
+    Height = 126
+    Top = 0
+    Width = 1180
+    Tabs = <    
+      item
+        Caption = 'Início'
+        Groups = <        
+          item
+            Caption = 'Grade'
+            Items = <            
+              item
+                Caption = 'Agrupar por país'
+                ImageIndex = 1
+                Gallery = <>
+                Tag = 1
+                OnClick = RibbonCmd
+              end            
+              item
+                Caption = 'Rodapé'
+                ImageIndex = 2
+                Gallery = <>
+                Size = risSmall
+                ButtonStyle = rbsCheck
+                Tag = 2
+                OnClick = RibbonCmd
+              end            
+              item
+                Caption = 'Linha de filtro'
+                ImageIndex = 3
+                Gallery = <>
+                Size = risSmall
+                ButtonStyle = rbsCheck
+                Tag = 3
+                OnClick = RibbonCmd
+              end            
+              item
+                Caption = 'Pesquisa'
+                ImageIndex = 4
+                Gallery = <>
+                Size = risSmall
+                ButtonStyle = rbsCheck
+                Tag = 4
+                OnClick = RibbonCmd
+              end>
+          end        
+          item
+            Caption = 'Grupos'
+            Items = <            
+              item
+                Caption = 'Expandir tudo'
+                ImageIndex = 6
+                Gallery = <>
+                Size = risSmall
+                Tag = 5
+                OnClick = RibbonCmd
+              end            
+              item
+                Caption = 'Recolher tudo'
+                ImageIndex = 6
+                Gallery = <>
+                Size = risSmall
+                Tag = 6
+                OnClick = RibbonCmd
+              end            
+              item
+                Caption = 'Melhor ajuste'
+                ImageIndex = 0
+                Gallery = <>
+                Size = risSmall
+                Tag = 7
+                OnClick = RibbonCmd
+              end>
+          end        
+          item
+            Caption = 'Dados'
+            Items = <            
+              item
+                Caption = 'Exportar'
+                ImageIndex = 5
+                Gallery = <>
+                ButtonStyle = rbsDropDown
+                DropDownMenu = pmExport
+              end            
+              item
+                Caption = 'Animar cartão'
+                ImageIndex = 7
+                Gallery = <>
+                Tag = 8
+                OnClick = RibbonCmd
+              end>
+          end>
+      end    
+      item
+        Caption = 'Exibir'
+        Groups = <        
+          item
+            Caption = 'Tema (FMX)'
+            Items = <            
+              item
+                Caption = 'Light'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                OnClick = SkinItemClick
+              end            
+              item
+                Caption = 'Dark'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 1
+                OnClick = SkinItemClick
+              end            
+              item
+                Caption = 'Air'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 2
+                OnClick = SkinItemClick
+              end            
+              item
+                Caption = 'Jet'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 3
+                OnClick = SkinItemClick
+              end>
+          end        
+          item
+            Caption = 'Skin (DevExpress)'
+            Items = <            
+              item
+                Caption = 'Office 2019 White'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 4
+                OnClick = SkinItemClick
+              end            
+              item
+                Caption = 'Office 2019 Colorful'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 5
+                OnClick = SkinItemClick
+              end            
+              item
+                Caption = 'Office 2019 Black'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 6
+                OnClick = SkinItemClick
+              end            
+              item
+                Caption = 'The Bezier'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 7
+                OnClick = SkinItemClick
+              end            
+              item
+                Caption = 'Basic'
+                ImageIndex = 8
+                Gallery = <>
+                Size = risSmall
+                Tag = 8
+                OnClick = SkinItemClick
+              end>
+          end>
+      end>
+    ApplicationButtonCaption = 'Arquivo'
+    ApplicationMenu = pmApp
+    QuickAccessItems = <>
+  end
+  object NavBar: TEsNavBar
+    Left = 0
+    Height = 634
+    Top = 126
+    Width = 210
+    Groups = <    
+      item
+        Caption = 'DevExpress-like'
+        Items = <        
+          item
+            Caption = 'Grade (não vinculada)'
+            ImageIndex = 0
+          end        
+          item
+            Caption = 'Grade (DataSet)'
+            ImageIndex = 0
+            Tag = 1
+          end        
+          item
+            Caption = 'Editores'
+            ImageIndex = 10
+            Tag = 3
+          end>
+      end    
+      item
+        Caption = 'FireMonkey-like'
+        Items = <        
+          item
+            Caption = 'Controles e animações'
+            ImageIndex = 9
+            Tag = 2
+          end>
+      end>
+    OnItemClick = NavBarItemClick
+    Align = alLeft
+  end
+  object pnlContent: TPanel
+    Left = 210
+    Height = 634
+    Top = 126
+    Width = 970
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 634
+    ClientWidth = 970
+    ParentBackground = False
+    TabOrder = 0
+    object pnlGrid: TPanel
+      Left = 0
+      Height = 634
+      Top = 0
+      Width = 970
+      Align = alClient
+      BevelOuter = bvNone
+      BorderWidth = 8
+      ClientHeight = 634
+      ClientWidth = 970
+      ParentBackground = False
+      TabOrder = 0
+      object ToolBar: TEsToolBarGrid
+        Left = 8
+        Height = 30
+        Top = 8
+        Width = 954
+        Grid = Grid
+        User = 'usuario'
+        TitleReport = 'Relatório de vendas'
+        CompanyName = 'Minha Empresa'
+      end
+      object Grid: TEsGrid
+        Left = 8
+        Height = 588
+        Top = 38
+        Width = 954
+        Columns = <        
+          item
+            Caption = 'Nº'
+            FieldName = 'Id'
+            Width = 60
+          end        
+          item
+            Caption = 'País'
+            FieldName = 'Pais'
+            Width = 120
+          end        
+          item
+            Caption = 'Produto'
+            FieldName = 'Produto'
+            Width = 150
+            SummaryKind = skCount
+          end        
+          item
+            Caption = 'Vendedor'
+            FieldName = 'Vendedor'
+            Width = 110
+          end        
+          item
+            Caption = 'Data'
+            FieldName = 'Data'
+            DisplayFormat = 'dd/mm/yyyy'
+          end        
+          item
+            Caption = 'Qtd'
+            FieldName = 'Qtd'
+            Width = 90
+            SummaryKind = skSum
+          end        
+          item
+            Caption = 'Total (R$)'
+            FieldName = 'Total'
+            Width = 140
+            SummaryKind = skSum
+            DisplayFormat = ',0.00'
+          end        
+          item
+            Caption = 'Pago'
+            FieldName = 'Pago'
+            Width = 70
+          end>
+        OptionsView.Footer = True
+        OptionsView.FindPanel = True
+        Bands = <>
+        OnCustomDrawCell = GridCustomDrawCell
+        Align = alClient
+        TabOrder = 0
+      end
+    end
+    object pnlDataSet: TPanel
+      Left = 0
+      Height = 634
+      Top = 0
+      Width = 970
+      Align = alClient
+      BevelOuter = bvNone
+      BorderWidth = 8
+      ClientHeight = 634
+      ClientWidth = 970
+      ParentBackground = False
+      TabOrder = 1
+      Visible = False
+      object GridDB: TEsGrid
+        Left = 8
+        Height = 618
+        Top = 8
+        Width = 954
+        Columns = <>
+        OptionsView.FilterRow = True
+        OptionsView.Footer = True
+        Bands = <>
+        Align = alClient
+        TabOrder = 0
+      end
+    end
+    object pnlFmx: TPanel
+      Left = 0
+      Height = 634
+      Top = 0
+      Width = 970
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 634
+      ClientWidth = 970
+      ParentBackground = False
+      TabOrder = 2
+      Visible = False
+      object Card: TEsFxRectangle
+        Left = 24
+        Height = 440
+        Top = 24
+        Width = 640
+        Opacity = 1
+        Fill.Color = claWhite
+        Fill.GradientColor = claWhite
+        Stroke.Kind = bkNone
+        Stroke.Color = claBlack
+        Stroke.GradientColor = claBlack
+        Stroke.Thickness = 1
+        Shadow.Enabled = True
+        Shadow.Distance = 4
+        Shadow.Direction = 90
+        Shadow.Softness = 12
+        Shadow.Opacity = 0.25
+        Shadow.ShadowColor = claBlack
+        Glow.Softness = 8
+        Glow.Opacity = 0.899999976158142
+        Glow.GlowColor = claGold
+        Blur.Softness = 4
+        ThemeFill = tfSurface
+        XRadius = 12
+        YRadius = 12
+        object txtTitle: TEsFxText
+          Left = 32
+          Height = 32
+          Top = 28
+          Width = 560
+          Opacity = 1
+          Text = 'Controles no estilo FireMonkey'
+          TextSettings.HorzAlign = txLeading
+          TextSettings.VertAlign = txCenter
+          Font.Height = -20
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object btnDefault: TEsFxButton
+          Left = 32
+          Height = 36
+          Top = 76
+          Width = 120
+          Opacity = 1
+          TabOrder = 0
+          Text = 'Padrão'
+          XRadius = -1
+          TextSettings.HorzAlign = txCenter
+          TextSettings.VertAlign = txCenter
+        end
+        object btnPrimary: TEsFxButton
+          Left = 164
+          Height = 36
+          Top = 76
+          Width = 130
+          Opacity = 1
+          TabOrder = 1
+          Text = 'Animar'
+          ButtonStyle = fbsPrimary
+          XRadius = -1
+          TextSettings.HorzAlign = txCenter
+          TextSettings.VertAlign = txCenter
+          OnClick = btnPrimaryClick
+        end
+        object btnOutline: TEsFxButton
+          Left = 306
+          Height = 36
+          Top = 76
+          Width = 120
+          Opacity = 1
+          TabOrder = 2
+          Text = 'Contorno'
+          ButtonStyle = fbsOutline
+          XRadius = -1
+          TextSettings.HorzAlign = txCenter
+          TextSettings.VertAlign = txCenter
+        end
+        object btnDanger: TEsFxButton
+          Left = 438
+          Height = 36
+          Top = 76
+          Width = 150
+          Opacity = 1
+          TabOrder = 3
+          Text = 'Cor aleatória'
+          ButtonStyle = fbsDanger
+          XRadius = -1
+          TextSettings.HorzAlign = txCenter
+          TextSettings.VertAlign = txCenter
+          OnClick = btnDangerClick
+        end
+        object swDark: TEsFxSwitch
+          Left = 32
+          Height = 28
+          Top = 136
+          Width = 52
+          Opacity = 1
+          TabOrder = 4
+          OnSwitch = swDarkSwitch
+        end
+        object txtDark: TEsFxText
+          Left = 94
+          Height = 28
+          Top = 136
+          Width = 200
+          Opacity = 1
+          Text = 'Modo escuro'
+          TextSettings.HorzAlign = txLeading
+          TextSettings.VertAlign = txCenter
+        end
+        object chkNotify: TEsFxCheckBox
+          Left = 32
+          Height = 28
+          Top = 180
+          Width = 220
+          Opacity = 1
+          TabOrder = 5
+          Text = 'Receber notificações'
+          IsChecked = True
+          TextSettings.HorzAlign = txLeading
+          TextSettings.VertAlign = txCenter
+        end
+        object rbOptA: TEsFxRadioButton
+          Left = 32
+          Height = 28
+          Top = 216
+          Width = 160
+          Opacity = 1
+          TabOrder = 6
+          Text = 'Opção A'
+          IsChecked = True
+          TextSettings.HorzAlign = txLeading
+          TextSettings.VertAlign = txCenter
+          GroupName = 'g1'
+        end
+        object rbOptB: TEsFxRadioButton
+          Left = 200
+          Height = 28
+          Top = 216
+          Width = 160
+          Opacity = 1
+          TabOrder = 7
+          Text = 'Opção B'
+          TextSettings.HorzAlign = txLeading
+          TextSettings.VertAlign = txCenter
+          GroupName = 'g1'
+        end
+        object edtName: TEsFxEdit
+          Left = 32
+          Height = 36
+          Top = 264
+          Width = 330
+          Opacity = 1
+          TextPrompt = 'Digite seu nome...'
+          TabOrder = 8
+          TabStop = True
+        end
+        object trkValue: TEsFxTrackBar
+          Left = 32
+          Height = 30
+          Top = 322
+          Width = 330
+          Opacity = 1
+          TabOrder = 9
+          Max = 100
+          Value = 65
+          Frequency = 1
+          OnTracking = trkValueTracking
+        end
+        object prgValue: TEsFxProgressBar
+          Left = 32
+          Height = 8
+          Top = 372
+          Width = 330
+          Opacity = 1
+          Max = 100
+          Value = 65
+        end
+        object arcValue: TEsFxArcProgress
+          Left = 420
+          Height = 140
+          Top = 150
+          Width = 140
+          Opacity = 1
+          Max = 100
+          Value = 65
+          Thickness = 12
+          TextFormat = '%.0f%%'
+          Font.Height = -22
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object aniBusy: TEsFxAniIndicator
+          Left = 470
+          Height = 40
+          Top = 320
+          Width = 40
+          Opacity = 1
+          Active = True
+        end
+      end
+      object Bubble: TEsFxCircle
+        Left = 700
+        Height = 130
+        Hint = 'Passe o mouse (TEsFxColorAnimation com Trigger = ftMouseOver)'
+        Top = 40
+        Width = 130
+        Opacity = 1
+        Fill.Kind = bkGradient
+        Fill.Color = xFF7C4DFF
+        Fill.GradientColor = xFF00B0FF
+        Fill.GradientStyle = gsDiagonal
+        Stroke.Kind = bkNone
+        Stroke.Color = claBlack
+        Stroke.GradientColor = claBlack
+        Stroke.Thickness = 1
+        Shadow.Enabled = True
+        Shadow.Distance = 4
+        Shadow.Direction = 90
+        Shadow.Softness = 10
+        Shadow.Opacity = 0.300000011920929
+        Shadow.ShadowColor = claBlack
+        Glow.Softness = 8
+        Glow.Opacity = 0.899999976158142
+        Glow.GlowColor = claGold
+        Blur.Softness = 4
+        ParentShowHint = False
+        ShowHint = True
+      end
+      object Pulse: TEsFxRectangle
+        Left = 700
+        Height = 64
+        Top = 210
+        Width = 130
+        Opacity = 1
+        Fill.Color = xFF0067C0
+        Fill.GradientColor = xFF0067C0
+        Stroke.Kind = bkNone
+        Stroke.Color = claBlack
+        Stroke.GradientColor = claBlack
+        Stroke.Thickness = 1
+        Shadow.Distance = 3
+        Shadow.Direction = 45
+        Shadow.Softness = 6
+        Shadow.Opacity = 0.349999994039536
+        Shadow.ShadowColor = claBlack
+        Glow.Softness = 8
+        Glow.Opacity = 0.899999976158142
+        Glow.GlowColor = claGold
+        Blur.Softness = 4
+        XRadius = 32
+        YRadius = 32
+      end
+    end
+    object pnlEditors: TPanel
+      Left = 0
+      Height = 634
+      Top = 0
+      Width = 970
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 634
+      ClientWidth = 970
+      ParentBackground = False
+      TabOrder = 3
+      Visible = False
+      object gbEditors: TEsGroupBox
+        Left = 24
+        Height = 330
+        Top = 24
+        Width = 480
+        Caption = 'Editores (estilo DevExpress)'
+        Collapsible = True
+        TabOrder = 0
+        object lblButtonEdit: TLabel
+          Left = 20
+          Height = 15
+          Top = 48
+          Width = 74
+          Caption = 'TEsButtonEdit'
+        end
+        object edtButton: TEsButtonEdit
+          Left = 160
+          Height = 26
+          Top = 44
+          Width = 290
+          TextHint = 'Clique em "..." ou no X'
+          TabOrder = 0
+          Buttons = <          
+            item
+              Kind = sbkClear
+              Hint = 'Limpar'
+            end          
+            item
+              Hint = 'Abrir...'
+            end>
+          OnButtonClick = edtButtonButtonClick
+        end
+        object lblSpin: TLabel
+          Left = 20
+          Height = 15
+          Top = 92
+          Width = 61
+          Caption = 'TEsSpinEdit'
+        end
+        object edtSpin: TEsSpinEdit
+          Left = 160
+          Height = 26
+          Top = 88
+          Width = 140
+          Text = '10'
+          TabOrder = 1
+          Value = 10
+          MaxValue = 1000
+          Increment = 1
+          LargeIncrement = 10
+        end
+        object lblCombo: TLabel
+          Left = 20
+          Height = 15
+          Top = 136
+          Width = 114
+          Caption = 'TEsComboBox (skins)'
+        end
+        object cbSkin: TEsComboBox
+          Left = 160
+          Height = 26
+          Top = 132
+          Width = 290
+          ReadOnly = True
+          OnChange = cbSkinChange
+          TabOrder = 2
+          DropDownListStyle = lsFixedList
+        end
+        object lblDate: TLabel
+          Left = 20
+          Height = 15
+          Top = 180
+          Width = 62
+          Caption = 'TEsDateEdit'
+        end
+        object edtDate: TEsDateEdit
+          Left = 160
+          Height = 26
+          Top = 176
+          Width = 160
+          TabOrder = 3
+          DisplayFormat = 'dd/mm/yyyy'
+        end
+        object btnMenu: TEsButton
+          Left = 160
+          Height = 30
+          Top = 228
+          Width = 150
+          Caption = 'Exportar grade'
+          Kind = sxbkDropDown
+          DropDownMenu = pmExport
+          TabOrder = 4
+        end
+      end
+    end
+  end
+  object SkinController: TEsSkinController
+    Left = 1040
+    Top = 40
+  end
+  object BubbleColorAni: TEsFxColorAnimation
+    Duration = 0.300000011920929
+    Trigger = ftMouseOver
+    Target = Bubble
+    PropertyName = 'Fill.Color'
+    StartValue = xFF7C4DFF
+    StopValue = xFFFF4081
+    Left = 1080
+    Top = 40
+  end
+  object PulseAni: TEsFxFloatAnimation
+    Enabled = True
+    Duration = 0.899999976158142
+    Interpolation = itSinusoidal
+    AnimationType = atInOut
+    AutoReverse = True
+    Loop = True
+    Target = Pulse
+    PropertyName = 'Opacity'
+    StartValue = 1
+    StopValue = 0.25
+    Left = 1120
+    Top = 40
+  end
+  object pmExport: TPopupMenu
+    Left = 1040
+    Top = 90
+    object miCSV: TMenuItem
+      Caption = 'Exportar para CSV...'
+      OnClick = miCSVClick
+    end
+    object miClipboard: TMenuItem
+      Caption = 'Copiar para a área de transferência'
+      OnClick = miClipboardClick
+    end
+  end
+  object pmApp: TPopupMenu
+    Left = 1080
+    Top = 90
+    object miAbout: TMenuItem
+      Caption = 'Sobre o ESKit...'
+      OnClick = miAboutClick
+    end
+    object miExit: TMenuItem
+      Caption = 'Sair'
+      OnClick = miExitClick
+    end
+  end
+  object EsConnection1: TEsConnection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Left = 840
+    Top = 363
+  end
+end

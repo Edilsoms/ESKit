@@ -1,0 +1,12 @@
+# Arquivos do Delphi sempre com CRLF (a IDE calcula posições contando CRLF)
+delphi/**/*.pas    text eol=crlf
+delphi/**/*.dpk    text eol=crlf
+delphi/**/*.dpr    text eol=crlf
+delphi/**/*.dfm    text eol=crlf
+delphi/**/*.dproj  text eol=crlf
+delphi/**/*.inc    text eol=crlf
+# binários
+*.res   binary
+*.dcr   binary
+*.png   binary
+*.ico   binary

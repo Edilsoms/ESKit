@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <Name Value="ESKitDelphiCompat"/>
+    <Type Value="RunTimeOnly"/>
+    <Author Value="ESKit"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Description Value="ESKit: units com os nomes do Delphi (Vcl.Forms, Vcl.StdCtrls, System.SysUtils, Winapi.Windows, Data.DB...) que reexportam a LCL e o FPC, para compilar código Delphi sem trocar os uses. Geradas por tools/genvclcompat.py."/>
+    <License Value="Modified LGPL"/>
+    <Version Major="1"/>
+    <Files>
+      <Item>
+        <Filename Value="data.db.pas"/>
+        <UnitName Value="Data.DB"/>
+      </Item>
+      <Item>
+        <Filename Value="system.classes.pas"/>
+        <UnitName Value="System.Classes"/>
+      </Item>
+      <Item>
+        <Filename Value="system.contnrs.pas"/>
+        <UnitName Value="System.Contnrs"/>
+      </Item>
+      <Item>
+        <Filename Value="system.dateutils.pas"/>
+        <UnitName Value="System.DateUtils"/>
+      </Item>
+      <Item>
+        <Filename Value="system.inifiles.pas"/>
+        <UnitName Value="System.IniFiles"/>
+      </Item>
+      <Item>
+        <Filename Value="system.math.pas"/>
+        <UnitName Value="System.Math"/>
+      </Item>
+      <Item>
+        <Filename Value="system.strutils.pas"/>
+        <UnitName Value="System.StrUtils"/>
+      </Item>
+      <Item>
+        <Filename Value="system.syncobjs.pas"/>
+        <UnitName Value="System.SyncObjs"/>
+      </Item>
+      <Item>
+        <Filename Value="system.sysutils.pas"/>
+        <UnitName Value="System.SysUtils"/>
+      </Item>
+      <Item>
+        <Filename Value="system.types.pas"/>
+        <UnitName Value="System.Types"/>
+      </Item>
+      <Item>
+        <Filename Value="system.typinfo.pas"/>
+        <UnitName Value="System.TypInfo"/>
+      </Item>
+      <Item>
+        <Filename Value="system.variants.pas"/>
+        <UnitName Value="System.Variants"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.actnlist.pas"/>
+        <UnitName Value="Vcl.ActnList"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.buttons.pas"/>
+        <UnitName Value="Vcl.Buttons"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.checklst.pas"/>
+        <UnitName Value="Vcl.CheckLst"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.clipbrd.pas"/>
+        <UnitName Value="Vcl.Clipbrd"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.comctrls.pas"/>
+        <UnitName Value="Vcl.ComCtrls"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.controls.pas"/>
+        <UnitName Value="Vcl.Controls"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.dbctrls.pas"/>
+        <UnitName Value="Vcl.DBCtrls"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.dbgrids.pas"/>
+        <UnitName Value="Vcl.DBGrids"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.dialogs.pas"/>
+        <UnitName Value="Vcl.Dialogs"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.extctrls.pas"/>
+        <UnitName Value="Vcl.ExtCtrls"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.extdlgs.pas"/>
+        <UnitName Value="Vcl.ExtDlgs"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.filectrl.pas"/>
+        <UnitName Value="Vcl.FileCtrl"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.forms.pas"/>
+        <UnitName Value="Vcl.Forms"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.graphics.pas"/>
+        <UnitName Value="Vcl.Graphics"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.grids.pas"/>
+        <UnitName Value="Vcl.Grids"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.imglist.pas"/>
+        <UnitName Value="Vcl.ImgList"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.mask.pas"/>
+        <UnitName Value="Vcl.Mask"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.menus.pas"/>
+        <UnitName Value="Vcl.Menus"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.samples.spin.pas"/>
+        <UnitName Value="Vcl.Samples.Spin"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.stdctrls.pas"/>
+        <UnitName Value="Vcl.StdCtrls"/>
+      </Item>
+      <Item>
+        <Filename Value="vcl.valedit.pas"/>
+        <UnitName Value="Vcl.ValEdit"/>
+      </Item>
+      <Item>
+        <Filename Value="winapi.messages.pas"/>
+        <UnitName Value="Winapi.Messages"/>
+      </Item>
+      <Item>
+        <Filename Value="winapi.windows.pas"/>
+        <UnitName Value="Winapi.Windows"/>
+      </Item>
+    </Files>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+      <Item>
+        <PackageName Value="FCL"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

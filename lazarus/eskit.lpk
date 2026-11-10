@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="6">
+    <PathDelim Value="\"/>
+    <Name Value="ESKit"/>
+    <Type Value="RunAndDesignTime"/>
+    <AddToProjectUsesSection Value="True"/>
+    <Author Value="ESKit contributors"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="source;source\compat"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\$(LCLWidgetType)"/>
+      </SearchPaths>
+      <CodeGeneration>
+        <Optimizations>
+          <OptimizationLevel Value="2"/>
+        </Optimizations>
+      </CodeGeneration>
+      <Other>
+        <CustomOptions Value="$(IDEBuildOptions)"/>
+      </Other>
+    </CompilerOptions>
+    <Description Value="ESKit: componentes inspirados no FireMonkey (TFx*: formas anti-aliased, animações, estilos) e no DevExpress (TSx*: grid com agrupamento/filtro/sumário, editores com botões, NavBar, Ribbon, skins)."/>
+    <License Value="Modified LGPL"/>
+    <Version Major="1"/>
+    <Files>
+      <Item>
+        <Filename Value="source\esgraphics.pas"/>
+        <UnitName Value="EsGraphics"/>
+      </Item>
+      <Item>
+        <Filename Value="source\estheme.pas"/>
+        <UnitName Value="EsTheme"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esfxbase.pas"/>
+        <UnitName Value="EsFxBase"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esfxanimations.pas"/>
+        <UnitName Value="EsFxAnimations"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esfxshapes.pas"/>
+        <UnitName Value="EsFxShapes"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esfxstdctrls.pas"/>
+        <UnitName Value="EsFxStdCtrls"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esskins.pas"/>
+        <UnitName Value="EsSkins"/>
+      </Item>
+      <Item>
+        <Filename Value="source\eseditors.pas"/>
+        <UnitName Value="EsEditors"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esgrid.pas"/>
+        <UnitName Value="EsGrid"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esnavbar.pas"/>
+        <UnitName Value="EsNavBar"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esribbon.pas"/>
+        <UnitName Value="EsRibbon"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esgridexport.pas"/>
+        <UnitName Value="EsGridExport"/>
+      </Item>
+      <Item>
+        <Filename Value="source\estoolbargrid.pas"/>
+        <UnitName Value="EsToolBarGrid"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esdb.pas"/>
+        <UnitName Value="EsDB"/>
+      </Item>
+      <Item>
+        <Filename Value="source\eskitreg.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="ESKitReg"/>
+      </Item>
+      <Item>
+        <Filename Value="source\esfxlists.pas"/>
+        <UnitName Value="EsFxLists"/>
+      </Item>
+      <Item>
+        <Filename Value="source\estruetype.pas"/>
+        <UnitName Value="EsTrueType"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.ani.pas"/>
+        <UnitName Value="FMX.Ani"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.controls.pas"/>
+        <UnitName Value="FMX.Controls"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.edit.pas"/>
+        <UnitName Value="FMX.Edit"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.layouts.pas"/>
+        <UnitName Value="FMX.Layouts"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.listbox.pas"/>
+        <UnitName Value="FMX.ListBox"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.objects.pas"/>
+        <UnitName Value="FMX.Objects"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.stdctrls.pas"/>
+        <UnitName Value="FMX.StdCtrls"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.tabcontrol.pas"/>
+        <UnitName Value="FMX.TabControl"/>
+      </Item>
+      <Item>
+        <Filename Value="source\compat\fmx.types.pas"/>
+        <UnitName Value="FMX.Types"/>
+      </Item>
+      <Item>
+        <Filename Value="images\eskit_images.res"/>
+        <Type Value="Binary"/>
+      </Item>
+      <Item>
+        <Filename Value="images\toolbargrid_images.res"/>
+        <Type Value="Binary"/>
+      </Item>
+    </Files>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="FCL"/>
+      </Item>
+      <Item>
+        <PackageName Value="Printer4Lazarus"/>
+      </Item>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

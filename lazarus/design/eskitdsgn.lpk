@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="6">
+    <PathDelim Value="\"/>
+    <Name Value="ESKitDsgn"/>
+    <Type Value="DesignTime"/>
+    <Author Value="ESKit contributors"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\$(LCLWidgetType)"/>
+      </SearchPaths>
+      <Other>
+        <CustomOptions Value="$(IDEBuildOptions)"/>
+      </Other>
+    </CompilerOptions>
+    <Description Value="ESKit (design-time): editor de TAlphaColor no Inspetor de Objetos e modelos de projeto/formulário estilo Delphi."/>
+    <License Value="Modified LGPL"/>
+    <Version Major="1"/>
+    <Files>
+      <Item>
+        <Filename Value="eskitdsgnreg.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="ESKitDsgnReg"/>
+      </Item>
+      <Item>
+        <Filename Value="espropedits.pas"/>
+        <UnitName Value="EsPropEdits"/>
+      </Item>
+      <Item>
+        <Filename Value="esprojectdescs.pas"/>
+        <UnitName Value="EsProjectDescs"/>
+      </Item>
+      <Item>
+        <Filename Value="escompedits.pas"/>
+        <UnitName Value="EsCompEdits"/>
+      </Item>
+      <Item>
+        <Filename Value="esdelphiprofile.pas"/>
+        <UnitName Value="EsDelphiProfile"/>
+      </Item>
+    </Files>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="ESKit"/>
+      </Item>
+      <Item>
+        <PackageName Value="IDEIntf"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>
