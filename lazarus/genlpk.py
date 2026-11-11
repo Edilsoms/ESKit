@@ -5,7 +5,7 @@ root = os.path.dirname(os.path.abspath(__file__))
 src = os.path.join(root, 'source')
 order = ['esgraphics', 'estheme', 'esfxbase', 'esfxanimations', 'esfxshapes',
          'esfxstdctrls', 'esskins', 'eseditors', 'esgrid', 'esnavbar',
-         'esribbon', 'esgridexport', 'estoolbargrid', 'esdb', 'eskitreg']
+         'esribbon', 'esgridexport', 'estoolbargrid', 'esdb', 'esdboracle', 'eskitreg']
 files = [f[:-4] for f in os.listdir(src) if f.endswith('.pas')]
 units = [u for u in order if u in files] + sorted(u for u in files if u not in order)
 compat_dir = os.path.join(src, 'compat')

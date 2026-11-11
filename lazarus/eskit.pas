@@ -8,7 +8,7 @@ unit ESKit;
 interface
 
 uses
-  EsGraphics, EsTheme, EsFxBase, EsFxAnimations, EsFxShapes, EsFxStdCtrls, EsSkins, EsEditors, EsGrid, EsNavBar, EsRibbon, EsGridExport, EsToolBarGrid, EsDB, ESKitReg, EsFxLists, EsTrueType, FMX.Ani, FMX.Controls, FMX.Edit, FMX.Layouts, FMX.ListBox, FMX.Objects, FMX.StdCtrls, FMX.TabControl, FMX.Types, LazarusPackageIntf;
+  EsGraphics, EsTheme, EsFxBase, EsFxAnimations, EsFxShapes, EsFxStdCtrls, EsSkins, EsEditors, EsGrid, EsNavBar, EsRibbon, EsGridExport, EsToolBarGrid, EsDB, EsDBOracle, ESKitReg, EsFxLists, EsTrueType, FMX.Ani, FMX.Controls, FMX.Edit, FMX.Layouts, FMX.ListBox, FMX.Objects, FMX.StdCtrls, FMX.TabControl, FMX.Types, LazarusPackageIntf;
 
 implementation
 

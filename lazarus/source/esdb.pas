@@ -13,9 +13,9 @@
     TEsCommand      ~ TFDCommand      (executa SQL sem retorno de dados)
     TEsMemTable     ~ TFDMemTable     (dataset em memória - TBufDataset)
 
-  Drivers (DriverID): SQLite, PG, FB/IB, MySQL, MSSQL, Sybase, ODBC.
+  Drivers (DriverID): SQLite, PG, FB/IB, MySQL, MSSQL, Sybase, Ora, ODBC.
   As bibliotecas cliente (sqlite3.dll, libpq.dll, fbclient.dll,
-  libmysql.dll...) são carregadas dinamicamente somente ao conectar.
+  libmysql.dll, oci.dll...) são carregadas dinamicamente somente ao conectar.
 
   See the file COPYING.modifiedLGPL.txt, included in this distribution,
   for details about the license.
@@ -30,10 +30,19 @@ interface
 uses
   Classes, SysUtils, Variants, DB, BufDataset, SQLDB,
   // drivers registrados no TSQLConnector (carregamento dinâmico)
-  SQLite3Conn, PQConnection, IBConnection, MySQL80Conn, MSSQLConn, ODBCConn;
+  SQLite3Conn, PQConnection, IBConnection, MySQL80Conn, MSSQLConn, ODBCConn,
+  OracleConnection;
 
 type
   EEsDBError = class(EDatabaseError);
+
+var
+  { biblioteca cliente do Oracle (caminho completo ou nome); vazio = padrão:
+    oci.dll no Windows (pelo PATH), libclntsh.so no Linux. Defina antes da
+    primeira conexão (ou use EsSetOracleVendorLib, da unit EsDBOracle). }
+  EsOracleVendorLib: string = '';
+
+type
 
   { TEsConnection }
 
@@ -226,14 +235,19 @@ function EsConnectorTypeToDriverID(const AConnectorType: string): string;
 
 implementation
 
+uses
+  DynLibs; // SharedSuffix
+
 resourcestring
-  SEsNoDriver = 'DriverID não definido em "%s". Use SQLite, PG, FB, MySQL, MSSQL ou ODBC.';
+  SEsNoDriver = 'DriverID não definido em "%s". Use SQLite, PG, FB, MySQL, MSSQL, Ora ou ODBC.';
+  SEsClientLib = 'Não foi possível carregar a biblioteca cliente do banco (DriverID %s). '
+    + 'Instale o cliente do banco ou informe o caminho da biblioteca. Detalhe: %s';
   SEsUnknownDriver = 'DriverID "%s" desconhecido.';
   SEsNoConnection = '"%s" não tem Connection atribuída.';
   SEsNoSQL = '"%s" não tem CommandText.';
 
 const
-  DriverMap: array[0..7, 0..1] of string = (
+  DriverMap: array[0..8, 0..1] of string = (
     ('SQLite', 'SQLite3'),
     ('PG', 'PostgreSQL'),
     ('FB', 'Firebird'),
@@ -241,7 +255,38 @@ const
     ('MySQL', 'MySQL 8.0'),
     ('MSSQL', 'MSSQLServer'),
     ('Sybase', 'Sybase'),
+    ('Ora', 'Oracle'),
     ('ODBC', 'ODBC'));
+
+var
+  OracleLibHeld: Boolean = False;
+
+{ carrega a OCI pelo caminho escolhido antes que o conector a carregue pelo
+  nome padrão (o conector reaproveita a biblioteca já carregada) }
+procedure LoadOracleClient;
+var
+  Lib: string;
+begin
+  if OracleLibHeld or (TOracleConnectionDef.LoadedLibraryName <> '') then
+    Exit;
+  Lib := EsOracleVendorLib;
+  {$IFDEF UNIX}
+  // o padrão do FPC (libociei) é só o arquivo de dados do Instant Client
+  if Lib = '' then
+    Lib := 'libclntsh.' + SharedSuffix;
+  {$ENDIF}
+  if Lib = '' then
+    Exit; // Windows: oci.dll pelo PATH, carregada pelo próprio conector
+  try
+    TOracleConnectionDef.LoadFunction()(Lib);
+  except
+    on E: EInOutError do
+      raise EEsDBError.CreateFmt(SEsClientLib, ['Ora', E.Message]);
+  end;
+  OracleLibHeld := True;
+end;
+
+const
 
   // o commit automático é feito pelos próprios componentes (ver AutoCommit),
   // para nunca encerrar uma transação aberta explicitamente pelo usuário
@@ -333,7 +378,15 @@ procedure TEsConnection.DoInternalConnect;
 begin
   if ConnectorType = '' then
     raise EEsDBError.CreateFmt(SEsNoDriver, [Name]);
-  inherited DoInternalConnect;
+  if SameText(ConnectorType, 'Oracle') then
+    LoadOracleClient;
+  try
+    inherited DoInternalConnect;
+  except
+    // biblioteca cliente ausente: mensagem clara em vez de 'Can not load...'
+    on E: EInOutError do
+      raise EEsDBError.CreateFmt(SEsClientLib, [DriverID, E.Message]);
+  end;
   if Assigned(FOnConnected) then
     FOnConnected(Self);
 end;
@@ -980,4 +1033,7 @@ begin
   end;
 end;
 
+finalization
+  if OracleLibHeld then
+    TOracleConnectionDef.UnLoadFunction()();
 end.

@@ -17,7 +17,8 @@
   Drivers: esta unit já registra o SQLite (linkado no executável, sem DLL a
   partir do Delphi 10.4). Para outros bancos adicione ao projeto a unit do
   driver FireDAC, por exemplo FireDAC.Phys.PG, FireDAC.Phys.FB,
-  FireDAC.Phys.MySQL, FireDAC.Phys.MSSQL ou FireDAC.Phys.ODBC.
+  FireDAC.Phys.MySQL, FireDAC.Phys.MSSQL ou FireDAC.Phys.ODBC. Para o Oracle
+  (DriverID 'Ora') use a unit EsDBOracle, que existe também no Lazarus.
 
   See the file COPYING.modifiedLGPL.txt, included in this distribution,
   for details about the license.
@@ -355,7 +356,27 @@ begin
 end;
 
 procedure TEsConnection.DoConnect;
+var
+  L: TStringList;
 begin
+  if SameText(DriverName, 'Ora') then
+  begin
+    // driver não ligado: o erro do FireDAC não diz o que fazer
+    L := TStringList.Create;
+    try
+      FDManager.GetDriverNames(L);
+      if L.IndexOf('Ora') < 0 then
+        raise EEsDBError.Create('Driver Oracle (DriverID Ora) não registrado: '
+          + 'adicione a unit EsDBOracle ao uses do projeto.');
+    finally
+      L.Free;
+    end;
+    // o driver Oracle do FireDAC lê só Database; Server/Port seriam ignorados
+    if (GetParam('Server') <> '') or (GetParam('Port') <> '') then
+      raise EEsDBError.Create('No Oracle informe servidor, porta e serviço em '
+        + 'DatabaseName (''servidor:1521/servico'') ou um nome do TNS, e deixe '
+        + 'HostName e Port vazios.');
+  end;
   inherited DoConnect;
   if Assigned(FOnConnected) then
     FOnConnected(Self);

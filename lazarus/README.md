@@ -264,11 +264,11 @@ A unit `EsGridExport` também pode ser usada sem a barra: `EsExportGrid(EsGrid1,
 
 ### 3.5 ESKit DB (estilo FireDAC)
 
-Unit `EsDB`, construída sobre o SQLDB do Free Pascal. As bibliotecas cliente (`sqlite3.dll`, `libpq.dll`, `fbclient.dll`, `libmysql.dll`…) só são carregadas ao conectar.
+Unit `EsDB`, construída sobre o SQLDB do Free Pascal. As bibliotecas cliente (`sqlite3.dll`, `libpq.dll`, `fbclient.dll`, `libmysql.dll`, `oci.dll`…) só são carregadas ao conectar: um programa que não usa um banco não depende do cliente dele. Quando a biblioteca falta, a conexão para com `EEsDBError` dizendo qual biblioteca não foi encontrada.
 
 | ESKit | FireDAC | Observação |
 |---|---|---|
-| `TEsConnection` | `TFDConnection` | `DriverID` = `SQLite`, `PG`, `FB`/`IB`, `MySQL`, `MSSQL`, `Sybase`, `ODBC`; transação interna automática; `StorePassword` |
+| `TEsConnection` | `TFDConnection` | `DriverID` = `SQLite`, `PG`, `FB`/`IB`, `MySQL`, `MSSQL`, `Sybase`, `Ora`, `ODBC`; transação interna automática; `StorePassword` |
 | `TEsTransaction` | `TFDTransaction` | opcional |
 | `TEsQuery` | `TFDQuery` | `Post`/`Delete` gravam e fazem commit na hora; `CachedUpdates` + `ApplyAndCommit`; `FetchAll` (busca sob demanda) |
 | `TEsTable` | `TFDTable` | `TableName` (lista as tabelas no Inspetor de Objetos com a conexão ativa) |
@@ -296,6 +296,22 @@ end;
 ```
 
 Fora de uma transação explícita, `ExecSQL`, `Open`, `Refresh` e `ApplyUpdates` fazem commit sozinhos (`AutoCommit`, como no FireDAC). `TEsDatabase` e `TEsDataSet` continuam existindo como apelidos de `TEsConnection` e `TEsMemTable`.
+
+**Oracle.** `DriverID := 'Ora'` (o mesmo nome do FireDAC). Precisa do cliente Oracle ou do [Oracle Instant Client](https://www.oracle.com/database/technologies/instant-client.html) (pacote *Basic* ou *Basic Light*), com a mesma arquitetura do programa (32 ou 64 bits). A biblioteca é a `oci.dll` no Windows e a `libclntsh.so` no Linux; se ela não estiver no PATH (ou em `LD_LIBRARY_PATH`), informe o caminho com `EsSetOracleVendorLib`, da unit `EsDBOracle`, antes da primeira conexão. Para o mesmo código servir no Lazarus e no Delphi, ponha o servidor e o serviço em `DatabaseName` (ou um nome do `tnsnames.ora`) e deixe `HostName` vazio:
+
+```pascal
+uses EsDB, EsDBOracle;
+
+EsSetOracleVendorLib('C:\instantclient_21\oci.dll');   // opcional
+EsConnection1.DriverID := 'Ora';
+EsConnection1.DatabaseName := 'servidor:1521/servico';
+EsConnection1.UserName := 'scott';
+EsConnection1.Password := 'tiger';
+EsConnection1.Connected := True;
+EsQuery1.Open('select * from emp where deptno = :d', [10]);
+```
+
+O teste `examples/oracletest` confere o driver sem cliente instalado (o programa abre e a conexão falha com mensagem clara); com um servidor, rode `oracletest servidor:1521/servico usuario senha [biblioteca]` para conectar e consultar a `dual`.
 
 * **Parâmetros por nome**, em qualquer ordem: `ExecSQL('update cliente set nome = :nome where id = :id', ['id', 'nome'], [7, 'Ana'])`; também em `ExecSQLScalar` e `TEsQuery.Open`/`ExecSQL`. Na forma só com valores, os parâmetros seguem a ordem em que cada nome aparece pela primeira vez no SQL (um nome repetido é um único parâmetro); valores a mais geram erro.
 * **Busca sob demanda**: com `FetchAll = False` a consulta traz `PacketRecords` registros por vez; a transação de leitura fica aberta até o `Close`, e as gravações automáticas feitas nesse meio tempo usam `CommitRetaining` (gravam sem fechar o cursor). Com `FetchAll = True` (padrão) todos os registros vêm na abertura e a transação é encerrada na hora.
@@ -376,6 +392,7 @@ lazarus/
   examples/fxeffects/          testes de brilho, desfoque, vidro fosco e temas em arquivo
   examples/pdfunicode/         testes do PDF Unicode (subconjunto de fontes, hebraico, árabe)
   examples/delphicompat/       programa estilo Delphi compilado com as units Vcl.*
+  examples/oracletest/         teste do driver Oracle (sem cliente e com servidor)
   docs/screenshots/            imagens deste README
 ```
 

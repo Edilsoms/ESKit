@@ -83,6 +83,10 @@
         <UnitName Value="EsDB"/>
       </Item>
       <Item>
+        <Filename Value="source\esdboracle.pas"/>
+        <UnitName Value="EsDBOracle"/>
+      </Item>
+      <Item>
         <Filename Value="source\eskitreg.pas"/>
         <HasRegisterProc Value="True"/>
         <UnitName Value="ESKitReg"/>

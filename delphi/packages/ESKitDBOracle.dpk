@@ -1,0 +1,19 @@
+﻿package ESKitDBOracle;
+
+{$DESCRIPTION 'ESKit - driver Oracle (FireDAC) para o TEsConnection (runtime)'}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  dbrtl,
+  FireDAC,
+  FireDACCommon,
+  FireDACCommonDriver,
+  FireDACOracleDriver,
+  ESKitDB;
+
+contains
+  EsDBOracle in '..\source\EsDBOracle.pas';
+
+end.
